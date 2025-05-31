@@ -1,0 +1,412 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 0 0% 9%;
+    --secondary: 0 0% 14.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+    --accent: 0 0% 14.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+    --ring: 0 0% 83.1%;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Fluid Motion Animations */
+@keyframes fluid-move {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(30px, -30px) scale(1.1);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+}
+
+@keyframes fluid-rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes float-gentle {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes pulse-soft {
+  0%,
+  100% {
+    opacity: 0.8;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes gradient-shift {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* Glassmorphism with fluid colors */
+.glass-fluid {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.glass-fluid-dark {
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+/* Fluid background animation with darker overlay */
+.fluid-bg {
+  background-image: url("/fluid-bg.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  animation: fluid-move 20s ease-in-out infinite;
+}
+
+.fluid-bg::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+.fluid-bg::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    45deg,
+    rgba(193, 101, 221, 0.1),
+    rgba(92, 39, 254, 0.1),
+    rgba(42, 254, 183, 0.1),
+    rgba(85, 129, 241, 0.1)
+  );
+  background-size: 400% 400%;
+  animation: gradient-shift 15s ease infinite;
+  z-index: 2;
+}
+
+/* Floating elements that match the fluid theme */
+.fluid-float {
+  animation: float-gentle 8s ease-in-out infinite;
+}
+
+.fluid-pulse {
+  animation: pulse-soft 4s ease-in-out infinite;
+}
+
+/* Button styles with new gradient colors */
+.btn-gradient-orange {
+  background: linear-gradient(135deg, #ffcb52, #ff7b02);
+  border: none;
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.btn-gradient-orange:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(255, 123, 2, 0.3);
+}
+
+.btn-gradient-purple {
+  background: linear-gradient(135deg, #c165dd, #5c27fe);
+  border: none;
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.btn-gradient-purple:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(92, 39, 254, 0.3);
+}
+
+.btn-gradient-teal {
+  background: linear-gradient(135deg, #2afeb7, #08c792);
+  border: none;
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.btn-gradient-teal:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(8, 199, 146, 0.3);
+}
+
+.btn-gradient-blue {
+  background: linear-gradient(135deg, #5581f1, #1153fc);
+  border: none;
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.btn-gradient-blue:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(17, 83, 252, 0.3);
+}
+
+.btn-gradient-pink {
+  background: linear-gradient(135deg, #facd68, #fc76b3);
+  border: none;
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.btn-gradient-pink:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(252, 118, 179, 0.3);
+}
+
+.btn-gradient-cyan {
+  background: linear-gradient(135deg, #00f7a7, #04f5ed);
+  border: none;
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.btn-gradient-cyan:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(4, 245, 237, 0.3);
+}
+
+.btn-gradient-blue-purple {
+  background: linear-gradient(135deg, #1de5e2, #b588f7);
+  border: none;
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.btn-gradient-blue-purple:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(181, 136, 247, 0.3);
+}
+
+.btn-gradient-yellow {
+  background: linear-gradient(135deg, #ffe324, #ffb533);
+  border: none;
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.btn-gradient-yellow:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(255, 181, 51, 0.3);
+}
+
+/* Text gradients using the new colors */
+.text-gradient-orange {
+  background: linear-gradient(135deg, #ffcb52, #ff7b02);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-purple {
+  background: linear-gradient(135deg, #c165dd, #5c27fe);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-teal {
+  background: linear-gradient(135deg, #2afeb7, #08c792);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-blue {
+  background: linear-gradient(135deg, #5581f1, #1153fc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-pink {
+  background: linear-gradient(135deg, #facd68, #fc76b3);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-cyan {
+  background: linear-gradient(135deg, #00f7a7, #04f5ed);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-blue-purple {
+  background: linear-gradient(135deg, #1de5e2, #b588f7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-yellow {
+  background: linear-gradient(135deg, #ffe324, #ffb533);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Main primary button style */
+.btn-fluid-primary {
+  background: linear-gradient(135deg, #c165dd, #5c27fe);
+  background-size: 200% 200%;
+  animation: gradient-shift 3s ease infinite;
+  border: none;
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.btn-fluid-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(92, 39, 254, 0.3);
+}
+
+/* Main text gradient */
+.text-fluid {
+  background: linear-gradient(135deg, #c165dd, #5c27fe, #2afeb7);
+  background-size: 200% 200%;
+  animation: gradient-shift 5s ease infinite;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Card hover effects */
+.card-fluid {
+  transition: all 0.3s ease;
+}
+
+.card-fluid:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(92, 39, 254, 0.2);
+}
+
+/* Priority colors using new gradients */
+.priority-high {
+  background: linear-gradient(135deg, #ffcb52, #ff7b02);
+}
+
+.priority-medium {
+  background: linear-gradient(135deg, #ffe324, #ffb533);
+}
+
+.priority-low {
+  background: linear-gradient(135deg, #2afeb7, #08c792);
+}
+
+/* Category colors */
+.category-work {
+  background: linear-gradient(135deg, #5581f1, #1153fc);
+}
+
+.category-personal {
+  background: linear-gradient(135deg, #facd68, #fc76b3);
+}
+
+.category-shopping {
+  background: linear-gradient(135deg, #00f7a7, #04f5ed);
+}
+
+.category-health {
+  background: linear-gradient(135deg, #1de5e2, #b588f7);
+}
+
+/* Mobile responsive utilities */
+@media (max-width: 768px) {
+  .mobile-padding {
+    @apply px-4 py-2;
+  }
+
+  .mobile-text {
+    @apply text-sm;
+  }
+
+  .mobile-grid {
+    @apply grid-cols-1;
+  }
+}
+
+/* Custom scrollbar with new colors */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #c165dd, #5c27fe);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #5581f1, #1153fc);
+}
