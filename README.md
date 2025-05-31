@@ -207,7 +207,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 
 ### Calendar View
-![Calendar](screenshot/calendar.jpg)
+![Calendar](screenshot/calender.jpg)
 
 ---
 
