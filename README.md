@@ -191,7 +191,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 **Robera Kassaye** - Creator and Lead Developer
 
 - GitHub: [@robikas19](https://github.com/robikas19)
-- Email: [your-email@example.com]
+- Email: [roberakasayech@gmail.com]
 
 ## 🙏 Acknowledgments
 
