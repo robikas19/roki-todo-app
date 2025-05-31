@@ -65,13 +65,29 @@ export function TeamManager({ onClose, onSuccess }: TeamManagerProps) {
       const { data, error } = await supabase
         .from("teams")
         .select(`
-          *,
-          team_members!inner(count)
-        `)
+        *,
+        team_members!inner(
+          user_id,
+          role
+        )
+      `)
         .eq("team_members.user_id", user?.id)
 
       if (error) throw error
-      setTeams(data || [])
+
+      // Count members for each team
+      const teamsWithCount = await Promise.all(
+        (data || []).map(async (team) => {
+          const { count } = await supabase
+            .from("team_members")
+            .select("*", { count: "exact", head: true })
+            .eq("team_id", team.id)
+
+          return { ...team, member_count: count || 0 }
+        }),
+      )
+
+      setTeams(teamsWithCount)
     } catch (error: any) {
       toast({
         title: "Error fetching teams",
@@ -86,12 +102,15 @@ export function TeamManager({ onClose, onSuccess }: TeamManagerProps) {
       const { data, error } = await supabase
         .from("team_members")
         .select(`
-          *,
-          users (
-            email,
-            full_name
-          )
-        `)
+        id,
+        user_id,
+        role,
+        joined_at,
+        users!inner (
+          email,
+          full_name
+        )
+      `)
         .eq("team_id", teamId)
 
       if (error) throw error
