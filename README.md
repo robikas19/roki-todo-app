@@ -1,6 +1,6 @@
 # 🌟 Roki - Smart Todo List with Team Collaboration
 
-![Roki Banner](public/fluid-bg.png)
+![Roki Banner](screenshot/home.png)
 
 **Roki** is a modern, intelligent todo list application built with Next.js, Supabase, and a beautiful fluid gradient design. Created by **Robera**, Roki combines productivity with stunning visuals and powerful collaboration features.
 
@@ -203,13 +203,11 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 📸 Screenshots
 
 ### Dashboard
-![Dashboard](public/dashboard-screenshot.png)
+![Dashboard](screenshot/home.png)
 
-### Team Collaboration
-![Teams](public/teams-screenshot.png)
 
 ### Calendar View
-![Calendar](public/calendar-screenshot.png)
+![Calendar](screenshot/calendar.png)
 
 ---
 
