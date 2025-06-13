@@ -10,7 +10,6 @@ const inter = Inter({ subsets: ["latin"] })
 export const metadata: Metadata = {
   title: "Roki - Smart Todo List",
   description: "A modern todo list app with smart notifications and calendar integration",
-    generator: 'v0.dev'
 }
 
 export default function RootLayout({
